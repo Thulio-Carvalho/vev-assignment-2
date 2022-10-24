@@ -20,17 +20,17 @@ class TestCalculator(unittest.TestCase):
     
     def test_invalid_cargo(self):
         with self.assertRaises(TypeError):
-            funcionario = Funcionario("João", "joao@example.com", 1, 0)
+            Funcionario("João", "joao@example.com", 1, 0)
             
         with self.assertRaises(AttributeError):
-            funcionario = Funcionario("João", "joao@example.com", 1, "dev")
+            Funcionario("João", "joao@example.com", 1, "dev")
 
     def test_invalid_name(self):
         with self.assertRaises(TypeError):
-            funcionario = Funcionario(0, "joao@example.com", 1, "desenvolvedor")
+            Funcionario(0, "joao@example.com", 1, "desenvolvedor")
             
         with self.assertRaises(AttributeError):
-            funcionario = Funcionario("", "joao@example.com", 1, "desenvolvedor")
+            Funcionario("", "joao@example.com", 1, "desenvolvedor")
     
     def test_valid_email(self):    
         valid_emails = [
