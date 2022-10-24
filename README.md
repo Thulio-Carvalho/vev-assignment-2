@@ -1,31 +1,21 @@
 # VeV Assignment #2
 
-> Aplicação que processa boletos. Este app deve ser desenvolvido de acordo com padrões de Test Driven Development.
+> Duas aplicações referentes ao Exercício #2 da cadeira de Verificação e Validação
 
-## Especificação
+## Entregáveis
 
-A aplicação é um processador de boletos. O processador deve verificar todos os boletos e, caso o valor da soma de todos os boletos seja maior que o valor da fatura, então essa fatura deverá ser considerada como paga.
+- __Código das Aplicações__
 
-Uma fatura contém:
- - Data 
- - Valor total
- - Nome do cliente. 
+Cada aplicação reside em um único diretório, existente na raiz deste repositório
 
-Um boleto contém:
- - Código do boleto
- - Data
- - Valor pago.
+- __Desenvolvimento em TDD__
 
-O processador de boletos, ao receber uma lista de boletos, deve então, para cada boleto, criar um "pagamento" associado a essa fatura. Esse pagamento contém o valor pago, a data, e o tipo do pagamento efetuado (que nesse caso é "BOLETO").
+O processo de desenvolvimento em TDD pode ser verificado no histório de commits do repositório.
 
-Como dito anteriormente, caso a soma de todos os boletos ultrapasse o valor da fatura, a mesma deve ser marcada como "PAGA".
+- __Inspeção de Código por Par__
 
-**Exemplo**: Fatura de 1.500,00 com 3 boletos no valor de 500,00, 400,00 e 600,00: fatura marcada como PAGA, e três pagamentos do tipo BOLETO criados.
+Issues com a tag __[Inspeção]__ representam inspeção de código feita pelo par. Podem estar na lista de Issues abertas ou fechadas.
 
-
-
-## Como Usar [WIP]
-
-
-## Desenvolvimento [WIP]
-
+- __Avaliação do Processo de TDD__
+  - Thúlio: A utilização de TDD foi cansativa inicialmente - me parece mais intuitivo escrever código de funcionalidade / lógica de negócio antes de testes. Entretanto, após escrever os testes iniciais o processo ficou mais fácil. Ter uma suite de testes que podem ser reexecutadas entre cada iteração de desenvolvimento também gera maior confiança na corretudo do código.
+  - Augusto: 
