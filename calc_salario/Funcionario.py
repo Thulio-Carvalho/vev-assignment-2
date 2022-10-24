@@ -23,6 +23,9 @@ class Funcionario:
         if not isinstance(self.cargo, str): raise TypeError
         if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
 
+        if not isinstance(self.nome, str): raise TypeError
+        if self.nome.strip() == '': raise AttributeError
+
     def salario_liq(self):
         is_base_lower_than_threshold = self.salario_base < self.DISCOUNT_RATE[self.cargo]['base_val_threshold']
         def __lt_sallary(salario_base): 
