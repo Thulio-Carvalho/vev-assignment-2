@@ -31,6 +31,23 @@ class TestCalculator(unittest.TestCase):
             
         with self.assertRaises(AttributeError):
             funcionario = Funcionario("", "joao@example.com", 1, "desenvolvedor")
+    
+    def test_valid_email(self):    
+        valid_emails = [
+            "name.surname@gmail.com",
+            "anonymous123@yahoo.co.uk",
+        ]
+        for email in valid_emails:
+            Funcionario("Joao", email, 1, "desenvolvedor")
+
+    def test_invalid_email(self):
+         invalid_emails = [
+            "anonymous123@...uk",
+            "...@domain.us"
+         ]
+         for email in invalid_emails:
+            with self.assertRaises(AttributeError):
+                Funcionario("João", email, 1, 'desenvolvedor')
 
 if __name__ == '__main__':
     unittest.main()
