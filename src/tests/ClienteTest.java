@@ -21,19 +21,19 @@ class ClienteTest {
 
 	@Test
 	void testClienteSemFaturas() {
-		assertEquals(this.cliente.getFaturas().length(), 0);
+		assertEquals(this.cliente.getFaturas().size(), 0);
 	}
 	
 	@Test
 	void testClienteAddFatura() {
 		Fatura fatura = new Fatura(1, 350, "2022-08-24");
 		this.cliente.adicionaFatura(fatura);
-		assertEquals(this.cliente.getFaturas().length(), 1);
+		assertEquals(this.cliente.getFaturas().size(), 1);
 	}
 	
 	@Test
 	void testFiltraFaturasMenoresQue2000() {
-		Fatura fatura1 = new Fatura(1, 1999,99, "2022-08-24");
+		Fatura fatura1 = new Fatura(1, 1999.99, "2022-08-24");
 		Fatura fatura2 = new Fatura(2, 2000, "2022-08-24");
 		Fatura fatura3 = new Fatura(3, 2100, "2022-08-24");
 		
@@ -42,7 +42,7 @@ class ClienteTest {
 		this.cliente.adicionaFatura(fatura3);
 		
 		this.cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().length(), 2);
+		assertEquals(this.cliente.getFaturas().size(), 2);
 	}
 
 /*	
@@ -68,7 +68,7 @@ class ClienteTest {
 		this.cliente.adicionaFatura(fatura2);
 		
 		this.cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().length(), 1);
+		assertEquals(this.cliente.getFaturas().size(), 1);
 	}
 	
 	@Test
@@ -88,8 +88,8 @@ class ClienteTest {
 		c1.filtraFaturas();
 		c2.filtraFaturas();
 		
-		assertEquals(c1.getFaturas().length(), 2);
-		assertEquals(c1.getFaturas().length(), 0);
+		assertEquals(c1.getFaturas().size(), 2);
+		assertEquals(c1.getFaturas().size(), 0);
 	}
 	
 	@Test
@@ -103,7 +103,7 @@ class ClienteTest {
 		c1.adicionaFatura(fatura2);
 		
 		c1.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().length(), 0);
+		assertEquals(this.cliente.getFaturas().size(), 0);
 	}	
 
 }
