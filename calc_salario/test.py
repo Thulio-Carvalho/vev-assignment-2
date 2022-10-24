@@ -34,6 +34,22 @@ class TestCalculator(unittest.TestCase):
                         salario_liq_esperado,
                         f'Deveria ser {salario_liq_esperado}')
     
+    def test_testador_higher(self):
+        salario_base = 2000
+        salario_liq_esperado = salario_base * (1.0 - 0.25)
+        funcionario = Funcionario("João", "joao@example.com", salario_base, "TESTADOR")
+        self.assertEqual(funcionario.salario_liq(),
+                        salario_liq_esperado,
+                        f'Deveria ser {salario_liq_esperado}')
+
+    def test_testador_lower(self):
+        salario_base = 1999
+        salario_liq_esperado = salario_base * (1.0 - 0.15)
+        funcionario = Funcionario("João", "joao@example.com", salario_base, "TESTADOR")
+        self.assertEqual(funcionario.salario_liq(),
+                        salario_liq_esperado,
+                        f'Deveria ser {salario_liq_esperado}')
+
     def test_invalid_cargo(self):
         with self.assertRaises(TypeError):
             Funcionario("João", "joao@example.com", 1, 0)
