@@ -50,6 +50,8 @@ class TestCalculator(unittest.TestCase):
                 Funcionario("João", email, 1, 'desenvolvedor')
     
     def test_invalid_salario(self):
+        with self.assertRaises(TypeError):
+            Funcionario("João", "joao@example.com", "", "desenvolvedor")
         with self.assertRaises(AttributeError):
             Funcionario("João", "joao@example.com", -1, "desenvolvedor")
         with self.assertRaises(AttributeError):
