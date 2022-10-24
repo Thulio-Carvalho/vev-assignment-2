@@ -12,8 +12,17 @@ A aplicação é uma calculadora de salário de funcionários. Um funcionário c
 - Caso o cargo seja GERENTE, o funcionário terá desconto de 30% caso o salário seja maior ou igual que 5.000,00, ou apenas 20% caso o salário seja menor que isso
 
 
-## Como Usar [WIP]
+## Como Testar
 
+### Requisitos
+- Python 3
+- Python 3 Libs:
+  - re
+  - unittest
+  - numbers
 
-## Desenvolvimento [WIP]
+### Executando Testes
 
+```bash
+$ python3 test.py
+```
