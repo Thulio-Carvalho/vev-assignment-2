@@ -1,3 +1,5 @@
+import re
+
 class Funcionario:
     def __init__(self, nome, email, salario_base, cargo):
         self.nome = nome
@@ -31,6 +33,13 @@ class Funcionario:
         ]]
 
         if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
+
+        email_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+
+        def __isEmailValid(email):
+            if not re.fullmatch(email_regex, email): raise AttributeError
+        
+        __isEmailValid(self.email)
 
     def salario_liq(self):
         is_base_lower_than_threshold = self.salario_base < self.DISCOUNT_RATE[self.cargo]['base_val_threshold']
