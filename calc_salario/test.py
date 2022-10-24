@@ -25,5 +25,12 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(AttributeError):
             funcionario = Funcionario("João", "joao@example.com", 1, "dev")
 
+    def test_invalid_name(self):
+        with self.assertRaises(TypeError):
+            funcionario = Funcionario(0, "joao@example.com", 1, "desenvolvedor")
+            
+        with self.assertRaises(AttributeError):
+            funcionario = Funcionario("", "joao@example.com", 1, "desenvolvedor")
+
 if __name__ == '__main__':
     unittest.main()
