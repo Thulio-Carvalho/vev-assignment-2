@@ -1,4 +1,6 @@
 import re
+import numbers
+from typing import Type
 
 class Funcionario:
     def __init__(self, nome, email, salario_base, cargo):
@@ -40,6 +42,9 @@ class Funcionario:
             if not re.fullmatch(email_regex, email): raise AttributeError
         
         __isEmailValid(self.email)
+
+        if not isinstance(self.salario_base, numbers.Number): raise TypeError
+        if self.salario_base <= 0: raise AttributeError
 
     def salario_liq(self):
         is_base_lower_than_threshold = self.salario_base < self.DISCOUNT_RATE[self.cargo]['base_val_threshold']
