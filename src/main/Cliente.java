@@ -1,7 +1,7 @@
 package main;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Cliente {
@@ -31,7 +31,35 @@ public class Cliente {
 	}
 	
 	public void filtraFaturas() {
-		System.out.println("implementar...");
+		LocalDate dataAtual = LocalDate.now();
+		
+		for (Fatura fatura : faturas) {
+			LocalDate dataFatura = LocalDate.parse(fatura.getData());
+			double valorFatura = fatura.getValor();
+			
+			if (valorFatura < 2000) {
+				this.faturas.remove(fatura);
+			}
+			else if ((valorFatura >= 2000 && valorFatura < 2500) && diasFatura(dataAtual, dataFatura) <= 30) {
+				this.faturas.remove(fatura);
+			}
+			else if ((valorFatura >= 2500 && valorFatura < 3000) && diasFatura(dataAtual, dataFatura) <= 60) {
+				this.faturas.remove(fatura);
+			}
+			else if (valorFatura >= 4000 && ehDoSul()) {
+				this.faturas.remove(fatura);
+			}
+		}
 	}
+	
+	private boolean ehDoSul() {
+		return estado.equals("PR") || estado.equals("RS") || estado.equals("SC");
+	}
+
+	private int diasFatura(LocalDate dataAtual, LocalDate dataFatura) {
+		return dataAtual.getDayOfYear() - dataFatura.getDayOfYear();
+	}
+	
+	
 
 }

@@ -2,8 +2,6 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,6 +44,7 @@ class ClienteTest {
 	}
 
 /*	
+ * teste aparentemente repetido
 	@Test
 	void testFiltraFaturasMenoresQue2000() {
 		Fatura fatura1 = new Fatura(1, 2000, "2022-08-24");
@@ -58,7 +57,7 @@ class ClienteTest {
 		assertEquals(this.cliente.getFaturas().length(), 2);
 	}
 */
-	
+
 	@Test
 	void testFiltraFaturasEntre2000E2500() {
 		Fatura fatura1 = new Fatura(1, 2000, "2022-08-24");
@@ -70,7 +69,8 @@ class ClienteTest {
 		this.cliente.filtraFaturas();
 		assertEquals(this.cliente.getFaturas().size(), 1);
 	}
-	
+
+
 	@Test
 	void testFiltraFaturasEntre2500E3000() {
 		Cliente c1 = new Cliente("Augusto", "2022-07-25", "PB");
@@ -104,6 +104,7 @@ class ClienteTest {
 		
 		c1.filtraFaturas();
 		assertEquals(this.cliente.getFaturas().size(), 0);
-	}	
-
+	}
+	
 }
+
