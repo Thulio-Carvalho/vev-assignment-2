@@ -1,4 +1,5 @@
 import unittest
+from Funcionario import Funcionario
 
 class TestCalculator(unittest.TestCase):
     def test_dev_higher(self):
