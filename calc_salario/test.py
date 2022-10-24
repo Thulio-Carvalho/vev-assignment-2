@@ -17,6 +17,10 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(funcionario.salario_liq(),
                         salario_liq_esperado,
                         f'Deveria ser {salario_liq_esperado}')
+    
+    def test_invalid_cargo(self):
+        with self.assertRaises(AttributeError):
+            funcionario = Funcionario("João", "joao@example.com", 1, "dev")
 
 if __name__ == '__main__':
     unittest.main()
