@@ -1,34 +1,31 @@
-# oss-template
+# VeV Assignment #2
 
-> Pequena descrição do que seu projeto faz.
+> Aplicação que processa boletos. Este app deve ser desenvolvido de acordo com padrões de Test Driven Development.
 
-<!-- Descreva aqui no início os objetivos do seu projeto. -->
+## Especificação
 
-Um template para seu projeto Open Source contendo os arquivos essenciais. Mude os tópicos desse `README.md` para conter as informações necessárias do seu projeto. Nesse template irá conter:
+A aplicação é um processador de boletos. O processador deve verificar todos os boletos e, caso o valor da soma de todos os boletos seja maior que o valor da fatura, então essa fatura deverá ser considerada como paga.
 
-- `README.md`: Uma estrutura básica para descrever o que é seu projeto e como utilizá-lo.
-- `LICENSE`: A licença está como **MIT**, edite para outra caso necessário. Use o [choosealicense](https://choosealicense.com/) para ajudar.
-- `CONTRIBUTING.md`: Arquivo opcional onde pode conter mais detalhes de como contribuir para seu projeto.
-- `CODE_OF_CONDUCT.md`: Código de conduta baseado no [Contributor Covenant](https://www.contributor-covenant.org). Adapte se necessário.
-- `github/ISSUE_TEMPLATE`: Template para issues.
-- `github/PULL_REQUEST_TEMPLATE`: Template para pull requests.
+Uma fatura contém:
+ - Data 
+ - Valor total
+ - Nome do cliente. 
 
-## Como Usar
+Um boleto contém:
+ - Código do boleto
+ - Data
+ - Valor pago.
 
-<!-- Descreva como um usuário pode utilizar seu projeto. -->
+O processador de boletos, ao receber uma lista de boletos, deve então, para cada boleto, criar um "pagamento" associado a essa fatura. Esse pagamento contém o valor pago, a data, e o tipo do pagamento efetuado (que nesse caso é "BOLETO").
 
-## Desenvolvimento
+Como dito anteriormente, caso a soma de todos os boletos ultrapasse o valor da fatura, a mesma deve ser marcada como "PAGA".
 
-Descreva quais tecnologias necessárias para sua aplicação funcionar e adicione referências.
+**Exemplo**: Fatura de 1.500,00 com 3 boletos no valor de 500,00, 400,00 e 600,00: fatura marcada como PAGA, e três pagamentos do tipo BOLETO criados.
 
-```
-caso sua aplicação exija um comando para rodar, coloque aqui.
-```
 
-## Como Contribuir
 
-<!-- Descreva informações necessárias para contribuir. Se necessário referencie o CONTRIBUTING.md -->
+## Como Usar [WIP]
 
-## Licença
 
-MIT © [SeuProjeto]()
+## Desenvolvimento [WIP]
+
