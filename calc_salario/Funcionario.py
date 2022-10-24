@@ -20,11 +20,17 @@ class Funcionario:
         VALID_CARGOS = [
             'desenvolvedor'
         ]
-        if not isinstance(self.cargo, str): raise TypeError
-        if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
 
-        if not isinstance(self.nome, str): raise TypeError
-        if self.nome.strip() == '': raise AttributeError
+        def __string_input_validation(value):
+            if not isinstance(value, str): raise TypeError
+            if value.strip() == '': raise AttributeError
+
+        [__string_input_validation(value) for value in [
+            self.cargo,
+            self.nome
+        ]]
+
+        if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
 
     def salario_liq(self):
         is_base_lower_than_threshold = self.salario_base < self.DISCOUNT_RATE[self.cargo]['base_val_threshold']
