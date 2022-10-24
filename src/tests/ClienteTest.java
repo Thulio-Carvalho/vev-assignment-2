@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.Cliente;
+import main.Fatura;
 
 class ClienteTest {
 	
@@ -43,7 +44,8 @@ class ClienteTest {
 		this.cliente.filtraFaturas();
 		assertEquals(this.cliente.getFaturas().length(), 2);
 	}
-	
+
+/*	
 	@Test
 	void testFiltraFaturasMenoresQue2000() {
 		Fatura fatura1 = new Fatura(1, 2000, "2022-08-24");
@@ -55,6 +57,7 @@ class ClienteTest {
 		this.cliente.filtraFaturas();
 		assertEquals(this.cliente.getFaturas().length(), 2);
 	}
+*/
 	
 	@Test
 	void testFiltraFaturasEntre2000E2500() {

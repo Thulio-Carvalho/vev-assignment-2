@@ -7,11 +7,11 @@ import java.util.List;
 public class Cliente {
 	
 	private String nome;
-	private Date inclusao;
+	private String inclusao;
 	private String estado;
 	private List<Fatura> faturas;
 	
-	public Cliente(String nome, Date inclusao, String estado) {
+	public Cliente(String nome, String inclusao, String estado) {
 		this.nome = nome;
 		this.inclusao = inclusao;
 		this.estado = estado;
@@ -22,7 +22,7 @@ public class Cliente {
 		this.faturas.add(fatura);
 	}
 	
-	public Date getDataInclusao() {
+	public String getDataInclusao() {
 		return this.inclusao;
 	}
 	

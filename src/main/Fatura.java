@@ -1,14 +1,12 @@
 package main;
 
-import java.util.Date;
-
 public class Fatura {
 	
 	private Integer codigo;
 	private double valor;
-	private Date data;
+	private String data;
 	
-	public Fatura(Integer codigo, double valor, Date data) {
+	public Fatura(Integer codigo, double valor, String data) {
 		this.codigo = codigo;
 		this.valor = valor;
 		this.data = data;
@@ -18,7 +16,7 @@ public class Fatura {
 		return this.valor;
 	}
 	
-	public Date getData() {
+	public String getData() {
 		return this.data;
 	}
 }
