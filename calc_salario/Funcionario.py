@@ -17,6 +17,11 @@ class Funcionario:
                 'base_val_threshold': 3000,
                 'lt_discount': 0.1,
                 'gte_discount': 0.2
+            },
+            'dba': {
+                'base_val_threshold': 2000,
+                'lt_discount': 0.15,
+                'gte_discount': 0.25
             }
         }
 
@@ -32,10 +37,11 @@ class Funcionario:
 
     def __validate_nome(self):
         self.__string_input_validation(self.nome)
-        
+
     def __validate_cargo(self):
         VALID_CARGOS = [
-            'desenvolvedor'
+            'desenvolvedor',
+            'dba'
         ]
         self.__string_input_validation(self.cargo)
         if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
