@@ -27,6 +27,11 @@ class Funcionario:
                 'base_val_threshold': 2000,
                 'lt_discount': 0.15,
                 'gte_discount': 0.25
+            },
+            'gerente': {
+                'base_val_threshold': 5000,
+                'lt_discount': 0.2,
+                'gte_discount': 0.3
             }
         }
 
@@ -47,7 +52,8 @@ class Funcionario:
         VALID_CARGOS = [
             'desenvolvedor',
             'dba',
-            'testador'
+            'testador',
+            'gerente'
         ]
         self.__string_input_validation(self.cargo)
         if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
