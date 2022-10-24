@@ -21,28 +21,35 @@ class Funcionario:
         }
 
     def __validate_creation_parameters(self):
-        VALID_CARGOS = [
-            'desenvolvedor'
-        ]
+        self.__validate_nome()
+        self.__validate_cargo()
+        self.__validate_email()
+        self.__validate_salario_base()
 
-        def __string_input_validation(value):
+    def __string_input_validation(self, value):
             if not isinstance(value, str): raise TypeError
             if value.strip() == '': raise AttributeError
 
-        [__string_input_validation(value) for value in [
-            self.cargo,
-            self.nome
-        ]]
-
+    def __validate_nome(self):
+        self.__string_input_validation(self.nome)
+        
+    def __validate_cargo(self):
+        VALID_CARGOS = [
+            'desenvolvedor'
+        ]
+        self.__string_input_validation(self.cargo)
         if self.cargo.lower() not in VALID_CARGOS: raise AttributeError
 
+    def __validate_email(self):
+        self.__string_input_validation(self.email)
         email_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
 
         def __isEmailValid(email):
             if not re.fullmatch(email_regex, email): raise AttributeError
         
         __isEmailValid(self.email)
-
+    
+    def __validate_salario_base(self):
         if not isinstance(self.salario_base, numbers.Number): raise TypeError
         if self.salario_base <= 0: raise AttributeError
 
