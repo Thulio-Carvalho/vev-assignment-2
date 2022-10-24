@@ -1,6 +1,5 @@
 import re
 import numbers
-from typing import Type
 
 class Funcionario:
     def __init__(self, nome, email, salario_base, cargo):
