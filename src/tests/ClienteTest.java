@@ -24,50 +24,40 @@ class ClienteTest {
 	
 	@Test
 	void testClienteAddFatura() {
+		Cliente c = new Cliente("Augusto", "2022-08-24", "PB");
 		Fatura fatura = new Fatura(1, 350, "2022-08-24");
-		this.cliente.adicionaFatura(fatura);
-		assertEquals(this.cliente.getFaturas().size(), 1);
+		c.adicionaFatura(fatura);
+		assertEquals(c.getFaturas().size(), 1);
 	}
 	
 	@Test
 	void testFiltraFaturasMenoresQue2000() {
+		Cliente c = new Cliente("Augusto", "2022-08-24", "PB");
+		
 		Fatura fatura1 = new Fatura(1, 1999.99, "2022-08-24");
 		Fatura fatura2 = new Fatura(2, 2000, "2022-08-24");
 		Fatura fatura3 = new Fatura(3, 2100, "2022-08-24");
 		
-		this.cliente.adicionaFatura(fatura1);
-		this.cliente.adicionaFatura(fatura2);
-		this.cliente.adicionaFatura(fatura3);
+		c.adicionaFatura(fatura1);
+		c.adicionaFatura(fatura2);
+		c.adicionaFatura(fatura3);
 		
-		this.cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().size(), 2);
+		c.filtraFaturas();
+		assertEquals(c.getFaturas().size(), 2);
 	}
-
-/*	
- * teste aparentemente repetido
-	@Test
-	void testFiltraFaturasMenoresQue2000() {
-		Fatura fatura1 = new Fatura(1, 2000, "2022-08-24");
-		Fatura fatura2 = new Fatura(2, 2500, "2022-10-20");
-		
-		this.cliente.adicionaFatura(fatura1);
-		this.cliente.adicionaFatura(fatura2);
-		
-		this.cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().length(), 2);
-	}
-*/
 
 	@Test
 	void testFiltraFaturasEntre2000E2500() {
-		Fatura fatura1 = new Fatura(1, 2000, "2022-08-24");
+		Cliente c = new Cliente("Augusto", "2022-10-24", "PB");
+		
+		Fatura fatura1 = new Fatura(1, 2000, "2022-08-10");
 		Fatura fatura2 = new Fatura(2, 2500, "2022-10-20");
 		
-		this.cliente.adicionaFatura(fatura1);
-		this.cliente.adicionaFatura(fatura2);
+		c.adicionaFatura(fatura1);
+		c.adicionaFatura(fatura2);
 		
-		this.cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().size(), 1);
+		c.filtraFaturas();
+		assertEquals(c.getFaturas().size(), 1);
 	}
 
 
@@ -76,7 +66,7 @@ class ClienteTest {
 		Cliente c1 = new Cliente("Augusto", "2022-07-25", "PB");
 		Cliente c2 = new Cliente("Gomes", "2022-10-24", "PB");
 		
-		Fatura fatura1 = new Fatura(1, 2500, "2022-07-24");
+		Fatura fatura1 = new Fatura(1, 2500, "2022-10-24");
 		Fatura fatura2 = new Fatura(2, 3000, "2022-10-20");
 		
 		c1.adicionaFatura(fatura1);
@@ -89,7 +79,7 @@ class ClienteTest {
 		c2.filtraFaturas();
 		
 		assertEquals(c1.getFaturas().size(), 2);
-		assertEquals(c1.getFaturas().size(), 0);
+		assertEquals(c2.getFaturas().size(), 0);
 	}
 	
 	@Test

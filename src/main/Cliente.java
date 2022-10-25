@@ -7,13 +7,13 @@ import java.util.List;
 public class Cliente {
 	
 	private String nome;
-	private String inclusao;
+	private LocalDate inclusao;
 	private String estado;
 	private List<Fatura> faturas;
 	
 	public Cliente(String nome, String inclusao, String estado) {
 		this.nome = nome;
-		this.inclusao = inclusao;
+		this.inclusao = LocalDate.parse(inclusao);
 		this.estado = estado;
 		this.faturas = new ArrayList<>();
 	}
@@ -22,7 +22,7 @@ public class Cliente {
 		this.faturas.add(fatura);
 	}
 	
-	public String getDataInclusao() {
+	public LocalDate getDataInclusao() {
 		return this.inclusao;
 	}
 	
@@ -33,31 +33,47 @@ public class Cliente {
 	public void filtraFaturas() {
 		LocalDate dataAtual = LocalDate.now();
 		
+		List<Fatura> faturasFiltradas = new ArrayList<>();
+		
 		for (Fatura fatura : faturas) {
 			LocalDate dataFatura = LocalDate.parse(fatura.getData());
 			double valorFatura = fatura.getValor();
 			
 			if (valorFatura < 2000) {
-				this.faturas.remove(fatura);
+				faturasFiltradas.add(fatura);
 			}
 			else if ((valorFatura >= 2000 && valorFatura < 2500) && diasFatura(dataAtual, dataFatura) <= 30) {
-				this.faturas.remove(fatura);
+				faturasFiltradas.add(fatura);
 			}
-			else if ((valorFatura >= 2500 && valorFatura < 3000) && diasFatura(dataAtual, dataFatura) <= 60) {
-				this.faturas.remove(fatura);
+			else if ((valorFatura >= 2500 && valorFatura <= 3000) && inclusaoCliente(dataAtual, this.inclusao) <= 60) {
+				faturasFiltradas.add(fatura);
 			}
 			else if (valorFatura >= 4000 && ehDoSul()) {
-				this.faturas.remove(fatura);
+				faturasFiltradas.add(fatura);
 			}
 		}
+		removeFaturas(faturasFiltradas);
+	
+	}
+	
+	private void removeFaturas(List<Fatura> faturasFiltradas) {
+		for (Fatura f : faturasFiltradas) {
+			if (this.faturas.contains(f)) {
+				this.faturas.remove(f);
+			}
+		}
+	}
+
+	private int diasFatura(LocalDate dataAtual, LocalDate dataFatura) {
+		return dataAtual.getDayOfYear() - dataFatura.getDayOfYear();
 	}
 	
 	private boolean ehDoSul() {
 		return estado.equals("PR") || estado.equals("RS") || estado.equals("SC");
 	}
-
-	private int diasFatura(LocalDate dataAtual, LocalDate dataFatura) {
-		return dataAtual.getDayOfYear() - dataFatura.getDayOfYear();
+	
+	private int inclusaoCliente(LocalDate dataAtual, LocalDate dataInclusao) {
+		return dataAtual.getDayOfYear() - dataInclusao.getDayOfYear();
 	}
 	
 	
