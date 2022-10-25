@@ -94,7 +94,7 @@ class ClienteTest {
 		cliente.adicionaFatura(fatura2);
 		
 		cliente.filtraFaturas();
-		assertEquals(this.cliente.getFaturas().size(), 0);
+		assertEquals(cliente.getFaturas().size(), 1);
 	}
 	
 }

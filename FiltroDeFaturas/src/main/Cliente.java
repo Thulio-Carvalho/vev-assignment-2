@@ -52,7 +52,7 @@ public class Cliente {
 			else if ((valorFatura >= 2500 && valorFatura <= 3000) && Util.inclusaoCliente(dataAtual, this.inclusao) <= 60) {
 				faturasFiltradas.add(fatura);
 			}
-			else if (valorFatura >= 4000 && Util.ehDoSul(estado)) {
+			else if (valorFatura > 4000 && Util.ehDoSul(estado)) {
 				faturasFiltradas.add(fatura);
 			}
 		}
