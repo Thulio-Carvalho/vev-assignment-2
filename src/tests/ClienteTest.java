@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.Cliente;
+import main.Estados;
 import main.Fatura;
 
 class ClienteTest {
@@ -14,7 +15,7 @@ class ClienteTest {
 	
 	@BeforeEach
 	public void init() {
-		this.cliente = new Cliente("Augusto", "2022-08-24", "PB");
+		this.cliente = new Cliente("Augusto", "2022-08-24", Estados.PB);
 	}
 
 	@Test
@@ -24,7 +25,7 @@ class ClienteTest {
 	
 	@Test
 	void testClienteAddFatura() {
-		Cliente c = new Cliente("Augusto", "2022-08-24", "PB");
+		Cliente c = new Cliente("Augusto", "2022-08-24", Estados.PB);
 		Fatura fatura = new Fatura(1, 350, "2022-08-24");
 		c.adicionaFatura(fatura);
 		assertEquals(c.getFaturas().size(), 1);
@@ -32,7 +33,7 @@ class ClienteTest {
 	
 	@Test
 	void testFiltraFaturasMenoresQue2000() {
-		Cliente c = new Cliente("Augusto", "2022-08-24", "PB");
+		Cliente c = new Cliente("Augusto", "2022-08-24", Estados.PB);
 		
 		Fatura fatura1 = new Fatura(1, 1999.99, "2022-08-24");
 		Fatura fatura2 = new Fatura(2, 2000, "2022-08-24");
@@ -48,7 +49,7 @@ class ClienteTest {
 
 	@Test
 	void testFiltraFaturasEntre2000E2500() {
-		Cliente c = new Cliente("Augusto", "2022-10-24", "PB");
+		Cliente c = new Cliente("Augusto", "2022-10-24", Estados.PB);
 		
 		Fatura fatura1 = new Fatura(1, 2000, "2022-08-10");
 		Fatura fatura2 = new Fatura(2, 2500, "2022-10-20");
@@ -63,8 +64,8 @@ class ClienteTest {
 
 	@Test
 	void testFiltraFaturasEntre2500E3000() {
-		Cliente c1 = new Cliente("Augusto", "2022-07-25", "PB");
-		Cliente c2 = new Cliente("Gomes", "2022-10-24", "PB");
+		Cliente c1 = new Cliente("Augusto", "2022-07-25", Estados.PB);
+		Cliente c2 = new Cliente("Gomes", "2022-10-24", Estados.PB);
 		
 		Fatura fatura1 = new Fatura(1, 2500, "2022-10-24");
 		Fatura fatura2 = new Fatura(2, 3000, "2022-10-20");
@@ -84,7 +85,7 @@ class ClienteTest {
 	
 	@Test
 	void testFiltraFaturasMaiorQue4000ClienteSul() {
-		Cliente c1 = new Cliente("Santos", "2022-10-24", "RS");
+		Cliente c1 = new Cliente("Santos", "2022-10-24", Estados.RS);
 		
 		Fatura fatura1 = new Fatura(1, 4000, "2022-08-24");
 		Fatura fatura2 = new Fatura(2, 4200, "2022-10-20");

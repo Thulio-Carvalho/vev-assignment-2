@@ -8,10 +8,10 @@ public class Cliente {
 	
 	private String nome;
 	private LocalDate inclusao;
-	private String estado;
+	private Estados estado;
 	private List<Fatura> faturas;
 	
-	public Cliente(String nome, String inclusao, String estado) {
+	public Cliente(String nome, String inclusao, Estados estado) {
 		this.nome = nome;
 		this.inclusao = LocalDate.parse(inclusao);
 		this.estado = estado;
@@ -20,6 +20,10 @@ public class Cliente {
 	
 	public void adicionaFatura(Fatura fatura) {
 		this.faturas.add(fatura);
+	}
+	
+	public String getNome() {
+		return this.nome;
 	}
 	
 	public LocalDate getDataInclusao() {
@@ -42,13 +46,13 @@ public class Cliente {
 			if (valorFatura < 2000) {
 				faturasFiltradas.add(fatura);
 			}
-			else if ((valorFatura >= 2000 && valorFatura < 2500) && diasFatura(dataAtual, dataFatura) <= 30) {
+			else if ((valorFatura >= 2000 && valorFatura < 2500) && Util.diasFatura(dataAtual, dataFatura) <= 30) {
 				faturasFiltradas.add(fatura);
 			}
-			else if ((valorFatura >= 2500 && valorFatura <= 3000) && inclusaoCliente(dataAtual, this.inclusao) <= 60) {
+			else if ((valorFatura >= 2500 && valorFatura <= 3000) && Util.inclusaoCliente(dataAtual, this.inclusao) <= 60) {
 				faturasFiltradas.add(fatura);
 			}
-			else if (valorFatura >= 4000 && ehDoSul()) {
+			else if (valorFatura >= 4000 && Util.ehDoSul(estado)) {
 				faturasFiltradas.add(fatura);
 			}
 		}
@@ -63,19 +67,5 @@ public class Cliente {
 			}
 		}
 	}
-
-	private int diasFatura(LocalDate dataAtual, LocalDate dataFatura) {
-		return dataAtual.getDayOfYear() - dataFatura.getDayOfYear();
-	}
-	
-	private boolean ehDoSul() {
-		return estado.equals("PR") || estado.equals("RS") || estado.equals("SC");
-	}
-	
-	private int inclusaoCliente(LocalDate dataAtual, LocalDate dataInclusao) {
-		return dataAtual.getDayOfYear() - dataInclusao.getDayOfYear();
-	}
-	
-	
 
 }
